@@ -8,8 +8,7 @@ def default():
     return 'API Working'
 
 @app.get('/base_predict')
-def base_predict(date , is_weekend , is_holiday):
-    params = [date , is_weekend , is_holiday]
+def base_predict(date):
 
     url = "https://api.open-meteo.com/v1/forecast"
     params_weather = {
