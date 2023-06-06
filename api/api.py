@@ -1,5 +1,7 @@
 from fastapi import FastAPI
 import requests
+import json,csv
+from shapely import Polygon
 
 app = FastAPI()
 
@@ -25,3 +27,14 @@ def base_predict(date):
     weather_data = requests.get(url, params=params_weather).json()
 
     return {'Xpred' : weather_data['hourly']}
+
+@app.get('/polygons')
+def ploygons():
+    polygons = {}
+    # load coordinates for districts from csv and sava them in a dict of Polygons
+    with open('data/polygons.csv', 'r') as csvfile:
+        reader = csv.DictReader(csvfile)
+        for row in reader:
+            polygons[row['district']] = json.loads(row['coordinates'])
+
+    return polygons
