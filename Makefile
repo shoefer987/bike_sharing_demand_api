@@ -21,5 +21,6 @@ update_current_branch:
 	git checkout $(BRANCH)
 	git merge master
 
+# Syntax: make update_requirements
 make update_requirements:
-	pip freeze > requirements.txt
+	@pip freeze > requirements.txt
