@@ -26,7 +26,7 @@ make update_requirements:
 	@pip freeze > requirements.txt
 
 # Syntax: make start_local_server
-# URL: http://localhost:8000/
+# URL: http://localhost:8000/docs
 # To shut down the server simply press Strg + C (Mac: Ctrl + C) in the corresponding terminal
 make start_local_server:
 	uvicorn api.api:app --reload
