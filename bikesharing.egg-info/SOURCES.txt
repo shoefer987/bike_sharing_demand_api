@@ -1,0 +1,8 @@
+README.md
+setup.py
+bikesharing.egg-info/PKG-INFO
+bikesharing.egg-info/SOURCES.txt
+bikesharing.egg-info/dependency_links.txt
+bikesharing.egg-info/not-zip-safe
+bikesharing.egg-info/requires.txt
+bikesharing.egg-info/top_level.txt

@@ -145,7 +145,7 @@ def train():
     pass
 
 # function to be defined
-def predict(weather_data):
+def predict(weather_data : dict):
     weather_data_df = pd.DataFrame(weather_data)
 
     pred_df = weather_data_df.rename({'time' : 'rent_date_hour'} , axis=1)
