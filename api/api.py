@@ -3,6 +3,8 @@ import requests
 import json,csv
 import random
 
+from bikesharing.interface.main import predict
+
 app = FastAPI()
 
 @app.get('/')
@@ -16,7 +18,7 @@ def base_predict(date):
     params_weather = {
         'latitude': 48.14,
         'longitude': 11.58,
-        'hourly': ['temperature_2m', 'relativehumidity_2m', 'apparent_temperature','windspeed_10m','precipitation'],
+        'hourly': ['temperature_2m', 'apparent_temperature','windspeed_10m','precipitation'],
         'forecast_days' : 1,
         'start_date' : date,
         'end_date' : date
@@ -26,16 +28,20 @@ def base_predict(date):
 
     weather_data = requests.get(url, params=params_weather).json()
 
-    # Returning Sample of y_Pred
+    pred = predict(weather_data['hourly'])
 
-    districts = ['Maxvorstadt', 'Schwabing-West', 'Au - Haidhausen', 'Sendling', 'Schwanthalerhöhe', 'Moosach', 'Berg am Laim', 'Trudering', 'Ramersdorf', 'Obergiesing', 'Untergiesing', 'Harlaching', 'Thalkirchen', 'Obersendling', 'Hadern', 'Pasing', 'Obermenzing', 'Lochhausen', 'Langwied', 'Feldmoching', 'Laim', 'Ludwigsvorstadt-Isarvorstadt', 'Ramersdorf-Perlach', 'Untermenzing-Allach', 'Hasenbergl-Lerchenau Ost', 'Südgiesing', 'Altstadt-Lehel', 'Sendling-Westpark', 'Neuhausen-Nymphenburg', 'Schwabing-Freimann', 'Pasing-Obermenzing', 'Aubing-Lochhausen-Langwied', 'Milbertshofen-Am Hart', 'Bogenhausen', 'Trudering-Riem', 'Untergiesing-Harlaching']
+    return pred
 
-    values = {}
+    # # Returning Sample of y_Pred
 
-    for district in districts:
-        values[district] = (random.sample(range(0,100),24))
+    # districts = ['Maxvorstadt', 'Schwabing-West', 'Au - Haidhausen', 'Sendling', 'Schwanthalerhöhe', 'Moosach', 'Berg am Laim', 'Trudering', 'Ramersdorf', 'Obergiesing', 'Untergiesing', 'Harlaching', 'Thalkirchen', 'Obersendling', 'Hadern', 'Pasing', 'Obermenzing', 'Lochhausen', 'Langwied', 'Feldmoching', 'Laim', 'Ludwigsvorstadt-Isarvorstadt', 'Ramersdorf-Perlach', 'Untermenzing-Allach', 'Hasenbergl-Lerchenau Ost', 'Südgiesing', 'Altstadt-Lehel', 'Sendling-Westpark', 'Neuhausen-Nymphenburg', 'Schwabing-Freimann', 'Pasing-Obermenzing', 'Aubing-Lochhausen-Langwied', 'Milbertshofen-Am Hart', 'Bogenhausen', 'Trudering-Riem', 'Untergiesing-Harlaching']
 
-    return values
+    # values = {}
+
+    # for district in districts:
+    #     values[district] = (random.sample(range(0,100),24))
+
+    # return values
 
 @app.get('/polygons')
 def ploygons():
