@@ -145,7 +145,7 @@ def train():
     pass
 
 # function to be defined
-def predict(weather_data : dict):
+def predict(weather_data):
     weather_data_df = pd.DataFrame(weather_data)
 
     pred_df = weather_data_df.rename({'time' : 'rent_date_hour'} , axis=1)
@@ -160,13 +160,13 @@ def predict(weather_data : dict):
     encoded_date = encode_temporal_features(pred_df[['rent_date_hour']])
     pred_df = pred_df.merge(encoded_date , on='rent_date_hour' , how='inner')
 
-    pred_proc_df = preprocess_features(pred_df)
+    pred_proc_df = preprocess_features(pred_df).drop(columns='rent_date_hour')
 
-    model = load_model()
+    model = load_model('Maxvorstadt')
 
-    prediction = model.predict(pred_proc_df)
+    prediction = [round(x) for x in model.predict(pred_proc_df)]
 
-    return prediction
+    return {'Maxvorstadt' : list(prediction)}
 
 
 # function to be defined

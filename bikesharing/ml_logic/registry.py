@@ -16,7 +16,7 @@ def save_model(model , district : str) -> None:
     print("✅ Model saved locally")
     return
 
-def load_model():
+def load_model(district : str):
     print(Fore.BLUE + f"\nLoad latest model from local registry..." + Style.RESET_ALL)
 
     # Get the latest model version name by the timestamp on disk

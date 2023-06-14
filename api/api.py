@@ -32,17 +32,6 @@ def base_predict(date):
 
     return pred
 
-    # # Returning Sample of y_Pred
-
-    # districts = ['Maxvorstadt', 'Schwabing-West', 'Au - Haidhausen', 'Sendling', 'Schwanthalerhöhe', 'Moosach', 'Berg am Laim', 'Trudering', 'Ramersdorf', 'Obergiesing', 'Untergiesing', 'Harlaching', 'Thalkirchen', 'Obersendling', 'Hadern', 'Pasing', 'Obermenzing', 'Lochhausen', 'Langwied', 'Feldmoching', 'Laim', 'Ludwigsvorstadt-Isarvorstadt', 'Ramersdorf-Perlach', 'Untermenzing-Allach', 'Hasenbergl-Lerchenau Ost', 'Südgiesing', 'Altstadt-Lehel', 'Sendling-Westpark', 'Neuhausen-Nymphenburg', 'Schwabing-Freimann', 'Pasing-Obermenzing', 'Aubing-Lochhausen-Langwied', 'Milbertshofen-Am Hart', 'Bogenhausen', 'Trudering-Riem', 'Untergiesing-Harlaching']
-
-    # values = {}
-
-    # for district in districts:
-    #     values[district] = (random.sample(range(0,100),24))
-
-    # return values
-
 @app.get('/polygons')
 def ploygons():
     polygons = {}
