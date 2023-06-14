@@ -176,7 +176,8 @@ def predict(weather_data):
         print(dist)
         model = load_model(dist)
 
-        prediction = [round(x) for x in model.predict(pred_proc_df)]
+        prediction = [0 if x < 0 else x for x in model.predict(pred_proc_df)]
+        prediction = [round(x*1.2) for x in prediction]
 
         predictions[dist] = prediction
 
