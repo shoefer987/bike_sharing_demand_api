@@ -21,7 +21,7 @@ def load_model(district : str):
 
     # Get the latest model version name by the timestamp on disk
     local_model_directory = os.path.join(LOCAL_REGISTRY_PATH, "models")
-    local_model_paths = glob.glob(f"{local_model_directory}/*")
+    local_model_paths = glob.glob(f"{local_model_directory}/{district}*")
 
     if not local_model_paths:
         return None
