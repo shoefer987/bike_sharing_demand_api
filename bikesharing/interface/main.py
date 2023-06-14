@@ -165,8 +165,7 @@ def predict(weather_data):
     districts = ['Maxvorstadt', 'Schwabing-West', 'Au - Haidhausen', 'Sendling',
        'Schwanthalerhöhe', 'Moosach', 'Berg am Laim', 'Trudering',
        'Ramersdorf', 'Obergiesing', 'Thalkirchen', 'Obersendling',
-       'Hadern', 'Pasing', 'Langwied', 'Laim',
-       'Ludwigsvorstadt-Isarvorstadt', 'Ramersdorf-Perlach', 'Südgiesing',
+       'Hadern', 'Pasing', 'Laim', 'Ludwigsvorstadt-Isarvorstadt', 'Ramersdorf-Perlach', 'Südgiesing',
        'Altstadt-Lehel', 'Sendling-Westpark', 'Neuhausen-Nymphenburg',
        'Schwabing-Freimann', 'Moosach', 'Milbertshofen-Am Hart',
        'Bogenhausen', 'Trudering-Riem', 'Untergiesing-Harlaching']
@@ -174,6 +173,7 @@ def predict(weather_data):
     predictions = {}
 
     for dist in districts:
+        print(dist)
         model = load_model(dist)
 
         prediction = [round(x) for x in model.predict(pred_proc_df)]
