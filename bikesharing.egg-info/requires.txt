@@ -14,7 +14,6 @@ attrs==23.1.0
 Babel==2.12.1
 backcall==0.2.0
 beautifulsoup4==4.12.2
--e git+ssh://git@github.com/shoefer987/bike_sharing_demand@7f75f0389c595086c3a096e37aef5e0247e1cc80#egg=bikesharing
 bleach==6.0.0
 blinker==1.6.2
 branca==0.6.0
