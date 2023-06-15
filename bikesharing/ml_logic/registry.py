@@ -10,7 +10,7 @@ def save_model(model , district : str) -> None:
     timestamp = time.strftime("%Y%m%d-%H%M%S")
 
     # Save model locally
-    model_path = os.path.join(LOCAL_REGISTRY_PATH, "models", f"{district}_{timestamp}.pkl")
+    model_path = f"bikesharing/data/models/{district}_{timestamp}.pkl"
     joblib.dump(model , model_path)
 
     print("✅ Model saved locally")
@@ -20,7 +20,7 @@ def load_model(district : str):
     print(Fore.BLUE + f"\nLoad latest model from local registry..." + Style.RESET_ALL)
 
     # Get the latest model version name by the timestamp on disk
-    local_model_directory = os.path.join(LOCAL_REGISTRY_PATH, "models")
+    local_model_directory = "bikesharing/data/models"
     local_model_paths = glob.glob(f"{local_model_directory}/{district}*")
 
     if not local_model_paths:
