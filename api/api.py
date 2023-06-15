@@ -36,7 +36,7 @@ def base_predict(date):
 def ploygons():
     polygons = {}
     # load coordinates for districts from csv and sava them in a dict of Polygons
-    with open('data/polygons.csv', 'r') as csvfile:
+    with open('bikesharing/data/polygons.csv', 'r') as csvfile:
         reader = csv.DictReader(csvfile)
         for row in reader:
             polygons[row['district']] = json.loads(row['coordinates'])
